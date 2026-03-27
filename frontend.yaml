@@ -62,5 +62,5 @@ spec:
     app: digi
   ports: 
   -  targetPort: 4545
-     ports: 4546
+     port: 4546
   type: NodePort
