@@ -43,12 +43,12 @@ spec:
           env:
             - name: MONGODB_URI
               valueFrom:
-                SecretKeyRef:
+                secretKeyRef:
                   name: digi-ser
                   key: MONGODB_URI
             - name: PORT
               valueFrom:
-                SecretKeyRef:
+                secretKeyRef:
                   name: digi-ser
                   key: PORT
 --- 
