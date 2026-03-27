@@ -32,7 +32,7 @@ spec:
         - name: digi-cont 
           image: muralisocial123/digital-bank:1.1.0
           ports:
-             - containerPort: 4545
+            - containerPort: 4545
           resources:
             requests: 
               memory: "100Mi"
@@ -59,7 +59,7 @@ metadata:
   namespace: new-ns
 spec:
   selector:
-    app: digi
+    app: digital
   ports: 
   -  targetPort: 4545
      port: 4545
