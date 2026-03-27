@@ -44,12 +44,12 @@ spec:
             - name: MONGODB_URI
               valueFrom:
                 SecretKeyRef:
-                  name: digi-con
+                  name: digi-ser
                   key: MONGODB_URI
             - name: PORT
               valueFrom:
                 SecretKeyRef:
-                  name: digi-con
+                  name: digi-ser
                   key: PORT
 --- 
 apiVersion: v1
