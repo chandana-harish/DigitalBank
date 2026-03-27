@@ -41,8 +41,8 @@ spec:
   selector:
     apps: back
   ports: 
-  -  targetPort:
-     port:  
+  -  targetPort: 27017
+     port: 27017
   type: ClusterIP 
 
   
