@@ -55,7 +55,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: digi-ser 
+  name: digi-serv 
   namespace: new-ns
 spec:
   selector:
