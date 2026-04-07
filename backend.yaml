@@ -42,14 +42,14 @@ spec:
             - name: my-storage 
               mountPath: /var/lib/mongo-storage 
   volumeClaimTemplates:
-    metadata:
-      - name: my-storage 
-    spec:
-     - name: "nfs-csi"
-       accessModes: ["ReadWriteOnce"]
-       resources:
-         requests:
-           storage: 2Gi
+    - metadata:
+        - name: my-storage 
+      spec:
+        storageClassName: "nfs-csi"
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 2Gi
 
             
 
