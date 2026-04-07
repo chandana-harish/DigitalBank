@@ -9,5 +9,5 @@ spec:
   ports:
   - targetPort: 4545
     port: 4545
-  type: NodePort
+  type: ClusterIP
    
