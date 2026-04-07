@@ -4,7 +4,7 @@ metadata:
   name: digi-route 
   namespace: digi 
 spec:
-  parentRefs:
+  parentRef:
     name: gateway-digi 
   rules:
     - matches:
