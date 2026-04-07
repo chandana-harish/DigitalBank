@@ -4,8 +4,9 @@ metadata:
   name: nfs-csi 
 provisioner: nfs.csi.k8s.io #
 parameters: 
-  share: /var/nfs/general/digi #
   server: 10.0.8.33
+  share: /var/nfs/general/digi #
+  
 
 
 
