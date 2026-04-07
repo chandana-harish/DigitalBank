@@ -15,7 +15,7 @@ spec:
         - type: URLRewrite 
           urlRewrite:
             path:
-              type: ReplacePrefixMatch
+              type: ReplacePrefixMatch #
               replacePrefixMatch: / 
       backendRefs:
         - name: frontend-service 
