@@ -12,11 +12,11 @@ spec:
           type: PathPrefix 
           value: /
       filters:
-      - type: URLRewrite 
-        urlRewrite:
-          path:
-            type: ReplacePathPrefixMatch
-            replacePathPrefixMatch: / 
+        - type: URLRewrite 
+          urlRewrite:
+            path:
+              type: ReplacePathPrefixMatch
+              replacePathPrefixMatch: / 
       backendRefs:
         - name: frontend-service 
           port: 4545
