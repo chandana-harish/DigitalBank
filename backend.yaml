@@ -1,0 +1,42 @@
+apiVersion: apps/v1 
+kind: StatefulSet 
+metadata:
+  name: backend-deployment 
+  namespace: digi 
+spec:
+  replicas: 1
+  minReadySeconds: 10 
+  selector:
+    apps : digii 
+  template:
+    metadata:
+      labels:
+        apps: digii 
+    spec:
+      terminationGracePeriodSeconds: 10 
+      containers:
+        - name: backend-cont 
+          image: mongo 
+          ports:
+            - containerPort: 4545 
+          resources:
+            request:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "512Mi"
+          env:
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: digi-sec
+                  key: MONGODB_URI
+            - name: PORT 
+              valueFrom:
+                secretKeyRef:
+                  name: digi-sec
+                  key: PORT
+          
+
+

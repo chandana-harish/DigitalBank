@@ -1,0 +1,12 @@
+apiVersion: v1 
+kind: Service 
+metadata:
+  name: backend-service 
+  namespace: digi
+spec:
+  selector:
+    apps: digii 
+  ports:
+  - targetPort: 27017
+    port: 27017
+  type: ClusterIP
