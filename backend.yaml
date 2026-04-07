@@ -45,11 +45,11 @@ spec:
     - metadata:
         - name: my-storage 
       spec:
-        storageClassName: "nfs-csi"
+        storageClassName: nfs-csi
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:
-            storage: 2Gi
+            storage: "2Gi"
 
             
 
