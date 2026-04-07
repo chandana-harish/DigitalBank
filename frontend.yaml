@@ -16,7 +16,8 @@ spec:
 
   template:
     metadata:
-      app: digi 
+      labels: 
+        app: digi 
     spec:
       containers:
         - name: digi-cont 
