@@ -38,6 +38,20 @@ spec:
                 secretKeyRef:
                   name: digi-sec
                   key: PORT
-          
+          volumeMounts:
+            - name: my-storage 
+              mountPath: /var/lib/mongo-storage 
+  volumeClaimTemplates:
+    metadata:
+      - name: my-storage 
+    spec:
+     - name: "nfs-csi"
+       accessModes: ["ReadWriteOnce"]
+       resources:
+         requests:
+           storage: 2Gi
+
+            
+
 
 
