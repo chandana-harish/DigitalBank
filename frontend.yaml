@@ -1,66 +1,44 @@
-apiVersion: v1
-kind: Secret
+apiVersion: apps/v1 
+kind: deployment 
 metadata: 
-  name: digi-ser
-  namespace: new-ns
-type: Opaque
-stringData: 
-  MONGODB_URI: "mongodb://admin:admin123@host.docker.internal:27017/bank_transaction_system?authSource=admin"
-  PORT: "4545"
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: frontend-digi
-  namespace: new-ns 
-spec: 
+  name: frontend-deployment 
+  namespace: digi 
+spec:
   replicas: 1
-  strategy: 
-    type: RollingUpdate
+  strategy:
+    type: RollingUpdate 
     rollingUpdate:
       maxUnavailable: 1
       maxSurge: 1
   selector:
-    matchLabels: 
-      app: digital
+    matchLabels:
+      app: digi 
+
   template:
     metadata:
-      labels: 
-        app: digital
-    spec: 
+      app: digi 
+    spec:
       containers:
         - name: digi-cont 
           image: muralisocial123/digital-bank:1.1.0
           ports:
             - containerPort: 4545
           resources:
-            requests: 
-              memory: "100Mi"
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
               cpu: "200m"
-            limits: 
-              memory: "500Mi"
-              cpu: "400m"
+              memory: "400Mi"
           env:
             - name: MONGODB_URI
               valueFrom:
                 secretKeyRef:
-                  name: digi-ser
+                  name: digi-sec
                   key: MONGODB_URI
-            - name: PORT
+            - name: PORT 
               valueFrom:
                 secretKeyRef:
-                  name: digi-ser
+                  name: digi-sec
                   key: PORT
---- 
-apiVersion: v1
-kind: Service
-metadata:
-  name: digi-serv 
-  namespace: new-ns
-spec:
-  selector:
-    app: digital
-  ports: 
-  -  targetPort: 4545
-     port: 4545
-  type: NodePort
+
