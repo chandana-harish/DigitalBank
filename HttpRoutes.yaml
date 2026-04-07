@@ -6,9 +6,9 @@ metadata:
 spec:
   - rules:
     - matches:
-      path:
-        type: PathPrefix 
-        value: /
+        path:
+          type: PathPrefix 
+          value: /
       filters:
         type: URLRewrite 
         urlRewrite:
