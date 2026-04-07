@@ -12,7 +12,7 @@ spec:
           type: PathPrefix 
           value: /
       filters:
-        type: URLRewrite 
+      - type: URLRewrite 
         urlRewrite:
           path:
             type: ReplacePathPrefixMatch
