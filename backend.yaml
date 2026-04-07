@@ -40,16 +40,16 @@ spec:
                   key: PORT
           volumeMounts:
             - name: my-storage 
-              mountPath: /var/lib/mongo-storage 
+              mountPath: /data/db
   volumeClaimTemplates:
     - metadata:
-        - name: my-storage 
+        name: my-storage 
       spec:
-        storageClassName: nfs-csi
+        storageClassName: "nfs-csi"
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:
-            storage: "2Gi"
+            storage: 2Gi
 
             
 
