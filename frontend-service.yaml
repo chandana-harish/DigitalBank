@@ -8,6 +8,6 @@ spec:
     app: digi 
   ports:
   - targetPort: 4545
-    Port: 4545
+    port: 4545
   type: ClusterIP
    
