@@ -7,7 +7,8 @@ spec:
   replicas: 1
   minReadySeconds: 10 
   selector:
-    apps : digii 
+    matchLabels:
+      apps: digii 
   template:
     metadata:
       labels:
