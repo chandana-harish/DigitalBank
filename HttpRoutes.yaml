@@ -15,8 +15,8 @@ spec:
         - type: URLRewrite 
           urlRewrite:
             path:
-              type: ReplacePathPrefixMatch
-              replacePathPrefixMatch: / 
+              type: ReplacePrefixMatch
+              replacePrefixMatch: / 
       backendRefs:
         - name: frontend-service 
           port: 4545
