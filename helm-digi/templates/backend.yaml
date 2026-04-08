@@ -40,7 +40,7 @@ spec:
                   key: PORT
           volumeMounts:
             - name: my-storage 
-              mountPath: /data/db
+              mountPath: /data/db #
   volumeClaimTemplates:
     - metadata:
         name: my-storage 
