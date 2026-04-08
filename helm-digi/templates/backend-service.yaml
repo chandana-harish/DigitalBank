@@ -10,4 +10,4 @@ spec:
   - targetPort: 27017
     port: 27017
   type: ClusterIP
-  clusterIP: none
+  clusterIP: None #
