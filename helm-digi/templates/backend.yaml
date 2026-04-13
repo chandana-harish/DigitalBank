@@ -22,11 +22,11 @@ spec:
             - containerPort: 4545 
           resources:
             requests:
+              cpu: "25m"
+              memory: "16Mi"
+            limits:
               cpu: "50m"
               memory: "64Mi"
-            limits:
-              cpu: "100m"
-              memory: "256Mi"
           env:
             - name: MONGODB_URI
               valueFrom:
