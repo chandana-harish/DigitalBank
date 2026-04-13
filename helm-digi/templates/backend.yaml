@@ -19,7 +19,7 @@ spec:
         - name: backend-cont 
           image: mongo 
           ports:
-            - containerPort: 4545 
+            - containerPort: 27017
           resources:
             requests:
               cpu: "50m"
