@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4 
         with: 
-          focus-depth: 0 
+          fetch-depth: 0 
       - name: snyk dependency check 
         uses: synk/actions/node@master 
         env:  
