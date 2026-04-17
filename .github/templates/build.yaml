@@ -1,0 +1,58 @@
+name: Build 
+on: 
+  push:
+    branches:
+      - master 
+jobs:
+  build:
+    name: build and analyse 
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v4 
+        with: 
+          focus-depth: 0 
+      - name: snyk dependency check 
+        uses: synk/actions/node@master 
+        env:  
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with: 
+          command: monitor 
+          args: --file=package.json 
+      - uses: SonarSource/sonarqube-scan-action@v6
+        env: 
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} 
+      - name: sonar quality gate 
+        uses: SonarSource/sonarqube-quality-gate-action@v1
+        env: 
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        timeout-minutes: 5 
+      - name: sucesss mail
+        if: success()
+        uses: dawidd6/action-send-mail@v3 
+        env: smtp.gmail.com
+        with: 
+          server_address: 
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "BUILD SUCCESS"
+          body: "QUALITY GATE PASSED "
+          from: GitHub Actions 
+          to: ${{ secrets.EMAIL_USERNAME }} 
+      - name: failure mail
+        if: failure()
+        uses: dawidd6/action-send-mail@v3 
+        env: smtp.gmail.com
+        with: 
+          server_address: 
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "BUILD SUCCESS"
+          body: "QUALITY GATE PASSED "
+          from: GitHub Actions 
+          to: ${{ secrets.EMAIL_USERNAME }}
+
+        
